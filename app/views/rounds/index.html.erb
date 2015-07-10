@@ -1,0 +1,33 @@
+<h1>Hello World!</h1>
+
+<table style='border:black 2px solid;border-collapse:collapse;'>
+  <thead>
+    <tr>
+      <th colspan="8" style="color:red; border-bottom:1px solid black">All Rounds</th>
+    </tr>
+    <tr>
+      <th>Holes</td>
+      <th>Course</td>
+      <th>Date</td>
+      <th>Par</td>
+      <th>Score</td>
+      <th>Difficulty</th>
+      <th>Drinking</th>
+      <th>Comments</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @rounds.each do |round| %>
+    <tr>
+      <td class="round-data"><%= round.holes %></td>
+      <td class="round-data"><%= round.course %></td>
+      <td class="round-data"><%= round.date %></td>
+      <td class="round-data"><%= round.par %></td>
+      <td class="round-data"><%= round.score %></td>
+      <td class="round-data"><%= round.difficulty %></td>
+      <td class="round-data"><%= round.drinking? %></td>
+      <td class="round-data"><%= link_to 'Comments', '#' %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
