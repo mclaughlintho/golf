@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  holes: 1
+  course: MyString
+  date: 2015-07-10 00:42:55
+  par: 1
+  score: 1
+  comments: MyString
+  drinking: false
+  difficulty: 1
+
+two:
+  holes: 1
+  course: MyString
+  date: 2015-07-10 00:42:55
+  par: 1
+  score: 1
+  comments: MyString
+  drinking: false
+  difficulty: 1
