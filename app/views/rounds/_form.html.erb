@@ -1,39 +1,41 @@
 <div class="new-round-form">
 
 <%= form_for([@user, @round]) do |f| %>
+<table>
+  <tr>
+    <td><%= f.label :holes %></td>
+    <td><%= f.number_field :holes %></td>
+  </tr>
+  <tr>
+    <td><%= f.label :course %></td>
+    <td><%= f.text_field :course %></td>
+  </tr>
+  <tr>
+    <td><%= f.label :par %></td>
+    <td><%= f.number_field :par %></td>
+  </tr>
+  <tr>
+    <td><%= f.label :score %></td>
+    <td><%= f.number_field :score %></td>
+  </tr>
+  <tr>
+    <td><%= f.label :comments %></td>
+    <td><%= f.text_area :comments %></td>
+  </tr>
+  <tr>
+    <td><%= f.label :drinking %></td>
+    <td><%= f.check_box :drinking %></td>
+  </tr>
+  <tr>
+    <td><%= f.label :difficulty, "Difficulty (1-10)" %></td>
+    <td><%= f.number_field :difficulty %></td>
+  </tr>
+  <tr>
+    <td><%= f.label :date, "Date (yyyymmdd)" %></td>
+    <td><%= f.number_field :date %></td>
+  </tr>
+</table>
 
-<p>
-  <%= f.label :holes %>
-  <%= f.number_field :holes %>
-</p>
-<p>
-  <%= f.label :course %>
-  <%= f.text_field :course %>
-</p>
-<p>
-  <%= f.label :par %>
-  <%= f.number_field :par %>
-</p>
-<p>
-  <%= f.label :score %>
-  <%= f.number_field :score %>
-</p>
-<p>
-  <%= f.label :comments %>
-  <%= f.text_area :comments %>
-</p>
-<p>
-  <%= f.label :drinking %>
-  <%= f.check_box :drinking %>
-</p>
-<p>
-  <%= f.label :difficulty %>
-  <%= f.number_field :difficulty %>
-</p>
-<p>
-  <%= f.label :date %>
-  <%= f.number_field :date %>
-</p>
 <p>
   <%= f.submit 'Submit' %>
 </p>
