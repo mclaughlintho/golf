@@ -1,0 +1,22 @@
+<table class='rounds-table'>
+  <thead>
+    <tr>
+      <th class="rounds-table-title"colspan="8">All Rounds</th>
+    </tr>
+    <tr>
+      <th class="round-data-type">Holes <span class="up-botton">^^</span><span class="down-button">!!</span></th>
+      <th class="round-data-type">Course <span class="up-botton">^^</span><span class="down-button">!!</span></th>
+      <th class="round-data-type">Date <span class="up-botton">^^</span><span class="down-button">!!</span></th>
+      <th class="round-data-type">Par <span class="up-botton">^^</span><span class="down-button">!!</span></th>
+      <th class="round-data-type">Score <span class="up-botton">^^</span><span class="down-button">!!</span></th>
+      <th class="round-data-type">Difficulty <span class="up-botton">^^</span><span class="down-button">!!</span></th>
+      <th class="round-data-type">Drinking <span class="up-botton">^^</span><span class="down-button">!!</span></th>
+      <th class="round-data-type">Comments <span class="up-botton">^^</span><span class="down-button">!!</span></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @user.rounds.each do |round| %>
+      <%= render 'round' %>
+    <% end %>
+  </tbody>
+</table>
