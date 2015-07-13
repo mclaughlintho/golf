@@ -4,19 +4,17 @@
       <th class="rounds-table-title"colspan="8">All Rounds</th>
     </tr>
     <tr>
-      <th class="round-data-type">Holes <span class="up-botton">^^</span><span class="down-button">!!</span></th>
-      <th class="round-data-type">Course <span class="up-botton">^^</span><span class="down-button">!!</span></th>
-      <th class="round-data-type">Date <span class="up-botton">^^</span><span class="down-button">!!</span></th>
-      <th class="round-data-type">Par <span class="up-botton">^^</span><span class="down-button">!!</span></th>
-      <th class="round-data-type">Score <span class="up-botton">^^</span><span class="down-button">!!</span></th>
-      <th class="round-data-type">Difficulty <span class="up-botton">^^</span><span class="down-button">!!</span></th>
-      <th class="round-data-type">Drinking <span class="up-botton">^^</span><span class="down-button">!!</span></th>
-      <th class="round-data-type">Comments <span class="up-botton">^^</span><span class="down-button">!!</span></th>
+      <th class="round-data-type">Holes <%= image_tag('casa.jpg', height:50, width:50) %><%= image_tag('casa.jpg', height:50, width:50) %></th>
+      <th class="round-data-type">Course <%= image_tag('casa.jpg', height:50, width:50) %><%= image_tag('casa.jpg', height:50, width:50) %></th>
+      <th class="round-data-type">Date <%= image_tag('casa.jpg', height:50, width:50) %><%= image_tag('casa.jpg', height:50, width:50) %></th>
+      <th class="round-data-type">Par <%= image_tag('casa.jpg', height:50, width:50) %><%= image_tag('casa.jpg', height:50, width:50) %></th>
+      <th class="round-data-type">Score <%= image_tag('casa.jpg', height:50, width:50) %><%= image_tag('casa.jpg', height:50, width:50) %></th>
+      <th class="round-data-type">Difficulty <%= image_tag('casa.jpg', height:50, width:50) %><%= image_tag('casa.jpg', height:50, width:50) %></th>
+      <th class="round-data-type">Drinking <%= image_tag('casa.jpg', height:50, width:50) %><%= image_tag('casa.jpg', height:50, width:50) %></th>
+      <th class="round-data-type">Comments <%= image_tag('casa.jpg', height:50, width:50) %><%= image_tag('casa.jpg', height:50, width:50) %></th>
     </tr>
   </thead>
   <tbody>
-    <% @user.rounds.each do |round| %>
-      <%= render 'round' %>
-    <% end %>
+      <%= render 'rounds/round' %>
   </tbody>
 </table>
