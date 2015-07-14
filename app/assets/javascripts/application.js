@@ -33,3 +33,24 @@ $(document).ready(function() {
     })
   })
 })
+
+// Clicking 'Delete' button
+
+$(document).ready(function() {
+  $(document).on('click', '.delete-button', function(event) {
+    event.preventDefault();
+    confirm("Are you sure you want to delete this Round?");
+    var deleteButton = $(this)
+    deleteButton.closest('.round').remove()
+  })
+})
+
+// Clicking 'Comments' link
+
+$(document).ready(function() {
+  $(document).on('click', '.comments', function(event) {
+    event.preventDefault;
+    var commentButton = $(this);
+    confirm(commentButton.data);
+  })
+})

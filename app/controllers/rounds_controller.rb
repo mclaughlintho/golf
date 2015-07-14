@@ -10,7 +10,7 @@ class RoundsController < ApplicationController
     @round = Round.find(params[:id])
     @user = @round.user
     @round.destroy
-    redirect_to @user
+    render nothing: true
   end
   
   def index

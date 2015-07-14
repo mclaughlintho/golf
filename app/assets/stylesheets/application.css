@@ -28,20 +28,40 @@
 
 .round-data {
   border-top:1px solid black;
-  width:100px;
   border-left:1px solid black;
 }
 
 .round-data-type {
-    width:100px;
+    width:120px;
     text-align:left;
     border-left:1px solid black;
+}
+
+#delete-button-row {
+    width:18px;
 }
 
 .rounds-table-title {
      color:red;
      border-bottom:1px solid black;
      font-size:1.5em;
+}
+
+.up-button {
+    float: right;
+    height:15px;
+    width:15px;
+}
+
+.down-button {
+    float:right;
+    height:15px;
+    width:15px;
+}
+
+.delete-button {
+    height:15px;
+    width:15px;
 }
 
 /* Header/Footer */
@@ -70,6 +90,8 @@
     padding:5px;
     border-radius:5px;
 }
+
+/* Rounds Form */
 
 .submit-button {
     color:black;
