@@ -6,7 +6,11 @@ class RoundsController < ApplicationController
     render @round
   end
   
-  def delete
+  def destroy
+    @round = Round.find(params[:id])
+    @user = @round.user
+    @round.destroy
+    redirect_to @user
   end
   
   def index

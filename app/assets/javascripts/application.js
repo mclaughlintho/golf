@@ -28,6 +28,7 @@ $(document).ready(function() {
       $('.rounds').append(newRound);
       form.find('input').val("");
       form.find('#round_comments').val("");
+      form.find('.submit-button').val("Submit");
     }
     })
   })

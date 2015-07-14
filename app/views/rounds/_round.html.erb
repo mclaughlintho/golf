@@ -7,4 +7,5 @@
       <td class="round-data"><%= round.difficulty %></td>
       <td class="round-data"><%= round.drinking? %></td>
       <td class="round-data"><%= link_to 'Comments', '#' %></td>
+      <td class="round-data"><%= link_to 'delete', [round.user, round], method: :delete %></td>
     </tr>
