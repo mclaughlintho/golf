@@ -14,3 +14,21 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+// Clicking 'Submit' button for a New Round
+
+$(document).ready(function() {
+  $(document).on('submit', '.new-round-form form', function(event) {
+    event.preventDefault();
+    var form = $(this)
+    $.ajax(form.attr('action'), {
+    type: 'post',
+    data: form.serialize(),
+    success: function(newRound) {
+      $('.rounds').append(newRound);
+      form.find('input').val("");
+      form.find('#round_comments').val("");
+    }
+    })
+  })
+})

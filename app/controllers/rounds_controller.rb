@@ -2,7 +2,8 @@ class RoundsController < ApplicationController
   
   def create
     @round = Round.create(round_params)
-    redirect_to @round.user
+    @user = User.find(params[:user_id])
+    render @round
   end
   
   def delete

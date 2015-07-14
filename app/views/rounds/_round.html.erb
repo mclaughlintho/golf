@@ -1,4 +1,3 @@
-  <% @user.rounds.all.each do |round| %> 
     <tr>
       <td class="round-data"><%= round.holes %></td>
       <td class="round-data"><%= round.course %></td>
@@ -9,4 +8,3 @@
       <td class="round-data"><%= round.drinking? %></td>
       <td class="round-data"><%= link_to 'Comments', '#' %></td>
     </tr>
-  <% end %>

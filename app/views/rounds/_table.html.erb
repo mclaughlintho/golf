@@ -4,7 +4,7 @@
       <th class="rounds-table-title"colspan="8">All Rounds</th>
     </tr>
     <tr>
-      <th class="round-data-type">Holes <%= image_tag('casa.jpg', height:50, width:50) %><%= image_tag('casa.jpg', height:50, width:50) %></th>
+      <th class="round-data-type">Holes <%= image_tag('up.png', height:50, width:50) %><%= image_tag('casa.jpg', height:50, width:50) %></th>
       <th class="round-data-type">Course <%= image_tag('casa.jpg', height:50, width:50) %><%= image_tag('casa.jpg', height:50, width:50) %></th>
       <th class="round-data-type">Date <%= image_tag('casa.jpg', height:50, width:50) %><%= image_tag('casa.jpg', height:50, width:50) %></th>
       <th class="round-data-type">Par <%= image_tag('casa.jpg', height:50, width:50) %><%= image_tag('casa.jpg', height:50, width:50) %></th>
@@ -14,7 +14,9 @@
       <th class="round-data-type">Comments <%= image_tag('casa.jpg', height:50, width:50) %><%= image_tag('casa.jpg', height:50, width:50) %></th>
     </tr>
   </thead>
-  <tbody>
-      <%= render 'rounds/round' %>
+  <tbody class="rounds">
+    <% @user.rounds.all.each do |round| %> 
+      <%= render round %>
+    <% end %>
   </tbody>
 </table>
