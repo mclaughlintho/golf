@@ -4,7 +4,7 @@
 <table>
   <tr>
     <td><%= f.label :holes %></td>
-    <td><%= f.number_field :holes %></td>
+    <td><%= f.select :holes, [[18,1], [9,2], ["Other",3]] %></td>
   </tr>
   <tr>
     <td><%= f.label :course %></td>
@@ -27,14 +27,12 @@
     <td><%= f.check_box :drinking %></td>
   </tr>
   <tr>
-    <td><%= f.label :difficulty, "Difficulty (1-10)" %></td>
-    <td><%= f.number_field :difficulty %></td>
-  </tr>
-  <tr>
     <td><%= f.label :date, "Date (yyyymmdd)" %></td>
     <td><%= f.number_field :date %></td>
   </tr>
 </table>
+
+
 
 <p>
   <%= f.submit 'Submit', class:'submit-button' %>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150710044234) do
+ActiveRecord::Schema.define(version: 20150715064322) do
 
   create_table "rounds", force: :cascade do |t|
     t.integer  "holes"
@@ -20,9 +20,9 @@ ActiveRecord::Schema.define(version: 20150710044234) do
     t.integer  "score"
     t.string   "comments"
     t.boolean  "drinking"
-    t.integer  "difficulty"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "score_to_par"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
     t.date     "date"
     t.integer  "user_id"
   end

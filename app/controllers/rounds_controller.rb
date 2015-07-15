@@ -20,7 +20,7 @@ class RoundsController < ApplicationController
   private
   
   def round_params
-    params.require(:round).permit(:holes, :course, :par, :score, :comments, :drinking, :difficulty, :date).merge(user_id: current_user.id)
+    params.require(:round).permit(:holes, :course, :par, :score, :comments, :drinking, :score_to_par, :date).merge(user_id: current_user.id)
   end
   
 end

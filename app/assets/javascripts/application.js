@@ -49,7 +49,7 @@ $(document).ready(function() {
 
 $(document).ready(function() {
   $(document).on('click', '.comments', function(event) {
-    event.preventDefault;
+    event.preventDefault();
     var commentButton = $(this);
     confirm(commentButton.data);
   })
