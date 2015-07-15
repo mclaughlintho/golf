@@ -7,7 +7,7 @@
       <td class="round-data"><%= round.score_to_par %></td>
       <td class="round-data"><%= round.drinking? %></td>
       <td class="round-data">
-          <%= link_to 'Comments', '#', class:"comments"  %>
+          <%= link_to 'Comments', '#', class:"comments", data: round.comments %>
       </td>
       <td class="round-data"><%= link_to image_tag('casa.jpg', class:'delete-button'), [round.user, round], method: :delete %></td>
     </tr>

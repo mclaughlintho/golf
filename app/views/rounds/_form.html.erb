@@ -4,7 +4,7 @@
 <table>
   <tr>
     <td><%= f.label :holes %></td>
-    <td><%= f.select :holes, [[18,1], [9,2], ["Other",3]] %></td>
+    <td><%= f.select :holes, [18, 9, 'Other'] %></td>
   </tr>
   <tr>
     <td><%= f.label :course %></td>
@@ -23,12 +23,12 @@
     <td><%= f.text_area :comments %></td>
   </tr>
   <tr>
-    <td><%= f.label :drinking %></td>
+    <td><%= f.label :drinking, "Drinking?" %></td>
     <td><%= f.check_box :drinking %></td>
   </tr>
   <tr>
-    <td><%= f.label :date, "Date (yyyymmdd)" %></td>
-    <td><%= f.number_field :date %></td>
+    <td><%= f.label :date %></td>
+    <td><%= f.date_select :date %></td>
   </tr>
 </table>
 
