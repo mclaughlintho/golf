@@ -4,31 +4,31 @@
 <table>
   <tr>
     <td><%= f.label :holes %></td>
-    <td><%= f.select :holes, [18, 9, 'Other'] %></td>
+    <td><%= f.select :holes, [18, 9, 'Other'], class:'form-control' %></td>
   </tr>
   <tr>
     <td><%= f.label :course %></td>
-    <td><%= f.text_field :course %></td>
+    <td><%= f.text_field :course, class:'form-control' %></td>
   </tr>
   <tr>
     <td><%= f.label :par %></td>
-    <td><%= f.number_field :par %></td>
+    <td><%= f.number_field :par, class:'form-control' %></td>
   </tr>
   <tr>
     <td><%= f.label :score %></td>
-    <td><%= f.number_field :score %></td>
+    <td><%= f.number_field :score, class:'form-control' %></td>
   </tr>
   <tr>
     <td><%= f.label :comments %></td>
-    <td><%= f.text_area :comments %></td>
+    <td><%= f.text_area :comments, class:'form-control' %></td>
   </tr>
   <tr>
     <td><%= f.label :drinking, "Drinking?" %></td>
-    <td><%= f.check_box :drinking %></td>
+    <td><%= f.check_box :drinking, class:'checkbox' %></td>
   </tr>
   <tr>
     <td><%= f.label :date %></td>
-    <td><%= f.date_select :date %></td>
+    <td><%= f.date_select :date, class:'form-control' %></td>
   </tr>
 </table>
 

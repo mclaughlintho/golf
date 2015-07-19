@@ -1,4 +1,4 @@
-<h1><%= gravatar_for @user %><%= @user.email %></h1>
+<div class="container-fluid"><h1><%= gravatar_for @user %><%= @user.email %></h1>
 
 <h4>Add your latest round:</h4>
 <div>
@@ -16,3 +16,10 @@
 
 <% end %>
 </div>
+</div>
+
+<script>
+$(document).ready(function() {
+  $("#rounds-table").tablesorter();
+});
+</script>

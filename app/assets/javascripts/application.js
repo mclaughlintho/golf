@@ -14,6 +14,8 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+//= require bootstrap-sprockets
+
 
 // Clicking 'Submit' button for a New Round
 
@@ -30,27 +32,28 @@ $(document).ready(function() {
       form.find('#round_comments').val("");
       form.find('.submit-button').val("Submit");
     }
-    })
-  })
-})
+    });
+  });
+
 
 // Clicking 'Delete' button
 
-$(document).ready(function() {
   $(document).on('click', '.delete-button', function(event) {
     event.preventDefault();
-    confirm("Are you sure you want to delete this Round?");
-    var deleteButton = $(this)
-    deleteButton.closest('.round').remove()
-  })
-})
-
-// Clicking 'Comments' link
-
-$(document).ready(function() {
-  $(document).on('click', '.comments', function(event) {
-    event.preventDefault();
-    var commentButton = $(this);
-    confirm(commentButton.data);
-  })
-})
+    if(confirm("Are you sure you want to delete this Round?") === true) {
+      var deleteButton = $(this),
+      userIdDiv = $('.user-id-div');
+      $.ajax({
+        url: '/users/' + userIdDiv.attr('id') + '/rounds/' + deleteButton.attr('id'),
+        type: 'delete',
+        success: function(result) {
+          console.log(result);
+          deleteButton.closest('.round').remove();
+        },
+        error: function(result) {
+          alert("There was an error");
+        }
+      });
+    }
+  });
+});

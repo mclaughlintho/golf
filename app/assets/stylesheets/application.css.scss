@@ -13,12 +13,19 @@
  *= require_tree .
  *= require_self
  */
+ 
+@import "bootstrap-sprockets";
+@import "bootstrap";
 
 * {
     font-family:Arial;
 }
 
 /* Rounds Table */
+
+.user-id-div {
+    display:none;
+}
 
 .rounds-table {
     border:black 2px solid;
@@ -59,20 +66,28 @@
     width:15px;
 }
 
-.delete-button {
+.delete-image {
     height:15px;
     width:15px;
+}
+
+.delete-button {
+    cursor:pointer;
 }
 
 /* Header/Footer */
 
 .header {
     float:right;
+    margin-top:10px;
+    margin-right:10px;
 }
 
 .footer {
     float:right;
     margin-top:20px;
+    margin-bottom:10px;
+    margin-right:10px;
 }
 
 .header a {

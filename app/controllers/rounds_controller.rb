@@ -26,7 +26,7 @@ class RoundsController < ApplicationController
   end
   
   def correct_user
-    if current_user != User.find(params[:id])
+    if current_user != User.find(params[:user_id])
       redirect_to root_url
     end
   end
