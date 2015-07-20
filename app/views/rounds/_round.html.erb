@@ -4,7 +4,15 @@
       <td class="round-data"><%= round.date %></td>
       <td class="round-data"><%= round.par %></td>
       <td class="round-data"><%= round.score %></td>
-      <td class="round-data"><%= round.score_to_par %></td>
+      <td class="round-data">
+        <% if !round.score_to_par.nil? && round.score_to_par == 0 %>
+          Even
+        <% elsif !round.score_to_par.nil? && round.score_to_par > 0 %>
+          +<%= round.score_to_par %>
+        <% else %>
+          <%= round.score_to_par %>
+        <% end %>
+      </td>
       <td class="round-data"><%= round.drinking? %></td>
       <td class="round-data">
         <% if  !round.comments.blank? %>

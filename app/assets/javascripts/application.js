@@ -15,11 +15,12 @@
 //= require turbolinks
 //= require_tree .
 //= require bootstrap-sprockets
+//= require tablesorter/jquery.tablesorter
 
 
 // Clicking 'Submit' button for a New Round
 
-$(document).ready(function() {
+$(document).on('ready page:load', function() {
   $(document).on('submit', '.new-round-form form', function(event) {
     event.preventDefault();
     var form = $(this)
@@ -40,7 +41,7 @@ $(document).ready(function() {
 
   $(document).on('click', '.delete-button', function(event) {
     event.preventDefault();
-    if(confirm("Are you sure you want to delete this Round?") === true) {
+    if(confirm("Are you sure you want to delete this Round?")) {
       var deleteButton = $(this),
       userIdDiv = $('.user-id-div');
       $.ajax({
@@ -56,4 +57,6 @@ $(document).ready(function() {
       });
     }
   });
+  
+  $("#rounds-table").tablesorter();
 });
