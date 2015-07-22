@@ -20,7 +20,8 @@
 
 // Clicking 'Submit' button for a New Round
 
-$(document).on('ready page:load', function() {
+$(document).ready(function() {
+  
   $(document).on('submit', '.new-round-form form', function(event) {
     event.preventDefault();
     var form = $(this)
@@ -48,7 +49,6 @@ $(document).on('ready page:load', function() {
         url: '/users/' + userIdDiv.attr('id') + '/rounds/' + deleteButton.attr('id'),
         type: 'delete',
         success: function(result) {
-          console.log(result);
           deleteButton.closest('.round').remove();
         },
         error: function(result) {
@@ -58,5 +58,8 @@ $(document).on('ready page:load', function() {
     }
   });
   
-  $("#rounds-table").tablesorter();
 });
+
+$(document).on('ready page:load', function() {
+   $("#rounds-table").tablesorter();
+})
