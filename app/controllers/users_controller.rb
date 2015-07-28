@@ -8,6 +8,9 @@ class UsersController < ApplicationController
   
   def create
     @user = User.create(user_params)
+    if @user.save
+      UserMailer.account_activations(@user).deliver_now
+    end
     redirect_to sign_in_path
   end
   
