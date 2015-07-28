@@ -25,6 +25,10 @@ class UsersController < ApplicationController
   
   private
   
+  def send_weekly_update(user)
+    UserMailer.weekly_updates(user).deliver_later(wait_until: Date.beginning_of_week)
+  end
+  
   def user_params
     params.require(:user).permit(:email, :password)
   end
