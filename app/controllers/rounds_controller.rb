@@ -1,6 +1,6 @@
 class RoundsController < ApplicationController
-  before_filter :require_login, only: [:create, :destroy]
-  before_filter :correct_user, only: [:create, :destroy]
+  before_action :require_login, only: [:create, :destroy]
+  before_action :correct_user, only: [:create, :destroy]
   
   def create
     @round = Round.create(round_params)
