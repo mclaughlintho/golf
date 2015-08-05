@@ -1,33 +1,5 @@
-<h1>Hello World!</h1>
+<h1 class="excite"><b>GolfTracker</b></h1>
 
-<table class='rounds-table'>
-  <thead>
-    <tr>
-      <th class="rounds-table-title"colspan="8">All Rounds</th>
-    </tr>
-    <tr>
-      <th class="round-data-type">Holes</th>
-      <th class="round-data-type">Course</th>
-      <th class="round-data-type">Date</th>
-      <th class="round-data-type">Par</th>
-      <th class="round-data-type">Score</th>
-      <th class="round-data-type">Score To Par</th>
-      <th class="round-data-type">Drinking</th>
-      <th class="round-data-type">Comments</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @rounds.each do |round| %>
-    <tr>
-      <td class="round-data"><%= round.holes %></td>
-      <td class="round-data"><%= round.course %></td>
-      <td class="round-data"><%= round.date %></td>
-      <td class="round-data"><%= round.par %></td>
-      <td class="round-data"><%= round.score %></td>
-      <td class="round-data"><%= round.score_to_par %></td>
-      <td class="round-data"><%= round.drinking? %></td>
-      <td class="round-data"><%= link_to 'Comments', '#' %></td>
-    </tr>
-    <% end %>
-  </tbody>
-</table>
+<p>To sign up for <span class="excite"><b>GolfTracker</b></span> and begin utilizing all of our great features click on the <b>BIG ASS GOLF BALL:</b></p>
+
+<%= link_to image_tag('golf_ball.jpg', height:"300px", width:"300px"), sign_up_path %>
