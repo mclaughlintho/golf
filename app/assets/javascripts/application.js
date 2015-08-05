@@ -71,21 +71,23 @@ $(document).on('ready page:load', function() {
 
 // Filtering Rounds
 
+// Score-To-Par Filter
+
 $(document).ready(function() {
-  $(document).on('change', "#round_score_to_par", function(event) {
-    var filterScore = $(this).val();
-    var better_or_worse = $('#better_or_worse option:selected').val();
+  $(document).on('change', "#filter_score_to_par", function(event) {
+    var filterScoreToPar = $(this).val();
+    var score_to_par_selector = $('#score_to_par_selector option:selected').val();
     $.map($('.score-to-par'), function(item, index) {
       var $item = $(item)
-      var actualScore = $item.data('score');
-      if(better_or_worse === "1") {
-        if(actualScore > filterScore) {
+      var actualScoreToPar = $item.data('score');
+      if(score_to_par_selector === "1") {
+        if(actualScoreToPar > filterScoreToPar) {
           $item.closest('.round').hide();
         } else {
           $item.closest('.round').show();
         }
       } else {
-        if(actualScore < filterScore) {
+        if(actualScoreToPar < filterScoreToPar) {
           $item.closest('.round').hide();
         } else {
           $item.closest('.round').show();
@@ -94,8 +96,38 @@ $(document).ready(function() {
     });
   });
   
-  $(document).on('change', '#better_or_worse', function() {
-    $('#round_score_to_par').trigger('change');
+  $(document).on('change', '#score_to_par_selector', function() {
+    $('#filter_score_to_par').trigger('change');
   })
   
 });
+
+// Par Filter
+
+$(document).ready(function() {
+    $(document).on('change', "#filter_par", function(event) {
+    var filterPar = $(this).val();
+    var par_selector = $('#par_selector option:selected').val();
+    $.map($('.par'), function(item, index) {
+      var $item = $(item)
+      var actualPar = $item.data('par');
+      if(par_selector === "1") {
+        if(actualPar < filterPar) {
+          $item.closest('.round').hide();
+        } else {
+          $item.closest('.round').show();
+        }
+      } else {
+        if(actualPar > filterPar) {
+          $item.closest('.round').hide();
+        } else {
+          $item.closest('.round').show();
+        }
+      }
+    });
+  });
+  
+  $(document).on('change', '#par_selector', function() {
+    $('#filter_par').trigger('change');
+  })
+})
