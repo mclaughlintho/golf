@@ -1,0 +1,16 @@
+<div class="filters">
+  <table class='filter-table'>
+    <tr>
+      <td><%= label_tag(:score_to_par, "Score to Par") %></td>
+      <td><%= select_tag(:better_or_worse, options_for_select([["Better Than", 1], ["Worse Than", 2]], 1)) %></td>
+      <td>
+        <%= form_tag do %>
+          <%= number_field(:round, :score_to_par) %>
+        <% end %>
+      </td>
+    </tr>
+  
+  
+
+  </table>
+</div>
