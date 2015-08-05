@@ -75,7 +75,6 @@ $(document).ready(function() {
   $(document).on('change', "#round_score_to_par", function(event) {
     var filterScore = $(this).val();
     var better_or_worse = $('#better_or_worse option:selected').val();
-    console.log(better_or_worse)
     $.map($('.score-to-par'), function(item, index) {
       var $item = $(item)
       var actualScore = $item.data('score');
@@ -93,6 +92,10 @@ $(document).ready(function() {
         }
       }
     });
-    
   });
+  
+  $(document).on('change', '#better_or_worse', function() {
+    $('#round_score_to_par').trigger('change');
+  })
+  
 });
