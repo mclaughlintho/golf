@@ -66,20 +66,33 @@ $(document).on('ready page:load', function() {
    $("#rounds-table").tablesorter();
 })
 
+
+
+
 // Filtering Rounds
 
 $(document).ready(function() {
   $(document).on('change', "#round_score_to_par", function(event) {
     var filterScore = $(this).val();
+    var better_or_worse = $('#better_or_worse option:selected').val();
+    console.log(better_or_worse)
     $.map($('.score-to-par'), function(item, index) {
       var $item = $(item)
       var actualScore = $item.data('score');
-      if(actualScore > filterScore) {
-        $item.closest('.round').hide();
+      if(better_or_worse === "1") {
+        if(actualScore > filterScore) {
+          $item.closest('.round').hide();
+        } else {
+          $item.closest('.round').show();
+        }
       } else {
-        $item.closest('.round').show();
+        if(actualScore < filterScore) {
+          $item.closest('.round').hide();
+        } else {
+          $item.closest('.round').show();
+        }
       }
-      });
+    });
     
   });
 });
