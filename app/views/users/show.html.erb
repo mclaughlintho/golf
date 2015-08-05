@@ -6,10 +6,7 @@
 </div>
 
 <div>
-    <%= form_tag do %>
-        <%= label_tag(:score_to_par, "Score to Par") %>
-        <%= number_field(:round, :score_to_par) %>
-    <% end %>
+    <%= render 'rounds/filter_table' %>
 </div>
 
 <div>

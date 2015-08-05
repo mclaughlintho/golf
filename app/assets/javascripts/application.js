@@ -60,6 +60,26 @@ $(document).ready(function() {
   
 });
 
+// TableSorter Plug-in
+
 $(document).on('ready page:load', function() {
    $("#rounds-table").tablesorter();
 })
+
+// Filtering Rounds
+
+$(document).ready(function() {
+  $(document).on('change', "#round_score_to_par", function(event) {
+    var filterScore = $(this).val();
+    $.map($('.score-to-par'), function(item, index) {
+      var $item = $(item)
+      var actualScore = $item.data('score');
+      if(actualScore > filterScore) {
+        $item.closest('.round').hide();
+      } else {
+        $item.closest('.round').show();
+      }
+      });
+    
+  });
+});
