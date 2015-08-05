@@ -18,8 +18,14 @@
         <% end %>
       </td>
     </tr>
-  
-  
-
+    <tr>
+      <td><%= label_tag(:score, "Score") %></td>
+      <td><%= select_tag(:score_selector, options_for_select([["Greater Than", 1], ["Less Than", 2]], 1)) %></td>
+      <td>
+        <%= form_tag do %>
+          <%= number_field(:filter, :score) %>
+        <% end %>
+      </td>
+    </tr>
   </table>
 </div>

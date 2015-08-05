@@ -131,3 +131,33 @@ $(document).ready(function() {
     $('#filter_par').trigger('change');
   })
 })
+
+// Score Filter
+
+$(document).ready(function() {
+    $(document).on('change', "#filter_score", function(event) {
+    var filterScore = $(this).val();
+    var score_selector = $('#score_selector option:selected').val();
+    $.map($('.score'), function(item, index) {
+      var $item = $(item)
+      var actualScore = $item.data('par');
+      if(score_selector === "1") {
+        if(actualScore < filterScore) {
+          $item.closest('.round').hide();
+        } else {
+          $item.closest('.round').show();
+        }
+      } else {
+        if(actualScore > filterScore) {
+          $item.closest('.round').hide();
+        } else {
+          $item.closest('.round').show();
+        }
+      }
+    });
+  });
+  
+  $(document).on('change', '#score_selector', function() {
+    $('#filter_score').trigger('change');
+  })
+})
