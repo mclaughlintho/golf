@@ -1,9 +1,9 @@
     <tr class="round">
-      <td class="holes"><%= round.holes %></td>
-      <td class="course"><%= round.course %></td>
       <td class="date"><%= round.date %></td>
-      <td class="par" data-par="<%=round.par %>"><%= round.par %></td>
+      <td class="course"><%= round.course %></td>
+      <td class="holes" data-holes="<%= round.holes %>"><%= round.holes %></td>
       <td class="score" data-par="<%=round.score %>"><%= round.score %></td>
+      <td class="par" data-par="<%=round.par %>"><%= round.par %></td>
       <td class="score-to-par" data-score="<%=round.score_to_par %>">
         <% if !round.score_to_par.nil? && round.score_to_par == 0 %>
           Even
