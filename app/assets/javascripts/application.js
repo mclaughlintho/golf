@@ -159,5 +159,36 @@ $(document).ready(function() {
   
   $(document).on('change', '#score_selector', function() {
     $('#filter_score').trigger('change');
-  })
-})
+  });
+});
+
+$(document).ready(function() {
+  $(document).on('change', '#holes_selector', function(event) {
+    var holes_selector = $(this).val();
+    $.map($('.holes'), function(item, index) {
+      var $item = $(item);
+      var actualHoles = $item.data('holes');
+      if(holes_selector === "1") {
+        $item.closest('.round').show();
+      } else if(holes_selector === "2") {
+        if(actualHoles === 18) {
+          $item.closest('.round').show();
+        } else {
+          $item.closest('.round').hide();
+        }
+      } else if(holes_selector === "3") {
+        if(actualHoles === 9) {
+          $item.closest('.round').show();
+        } else {
+          $item.closest('.round').hide();
+        }
+      } else if(holes_selector === "4") {
+        if(actualHoles === "Other") {
+          $item.closest('.round').show();
+        } else {
+          $item.closest('.round').hide();
+        }
+      }
+    });
+  });
+});
