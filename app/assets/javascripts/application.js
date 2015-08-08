@@ -232,3 +232,21 @@ $(document).ready(function() {
   });
 
 });
+
+// COurse Filter //
+
+$(document).ready(function() {
+  $(document).on('click', ".course-search", function(event) {
+    event.preventDefault();
+    var filterCourse = $('#course').val();
+    $.map($('.course'), function(item, index) {
+      var $item = $(item);
+      var actualCourse = $item.data('course');
+      if(actualCourse === filterCourse) {
+        $item.closest('.round').show();
+      } else {
+        $item.closest('.round').hide();
+      }
+    });
+  });
+});
