@@ -108,6 +108,16 @@
 
 /* Rounds Form */
 
+.new-round-table {
+    background-color:gray;
+    border-radius:20px;
+    margin-bottom:10px;
+}
+
+.new-round-table td {
+    padding: 8px;
+}
+
 .submit-button {
     color:black;
     text-decoration:none;
@@ -119,7 +129,13 @@
 /* Filter Table */
 
 .filter-table {
-    background-color:yellow;
+    background-color:green;
+    border-radius:20px;
+    margin-top:10px;
+}
+
+.filter-table td {
+    padding:8px;
 }
 
 /* Home Page */

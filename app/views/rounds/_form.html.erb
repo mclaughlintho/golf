@@ -1,10 +1,12 @@
-<div class="new-round-form">
+<div class="rew-round-form">
+  
+<h4>Add your latest round:</h4>
 
 <%= form_for([@user, @round]) do |f| %>
-<table>
+<table class="new-round-table">
   <tr>
     <td><%= f.label :holes %></td>
-    <td><%= f.select :holes, [18, 9, 'Other'], class:'form-control' %></td>
+    <td><%= f.select :holes, [18, 9, 'Other'] %></td>
   </tr>
   <tr>
     <td><%= f.label :course %></td>
@@ -28,15 +30,13 @@
   </tr>
   <tr>
     <td><%= f.label :date %></td>
-    <td><%= f.date_select :date, class:'form-control' %></td>
+    <td><%= f.date_field :date, class:'form-control' %></td>
+  </tr>
+  <tr>
+    <td><%= f.submit 'Submit', class:'submit-button' %></td>
+    <td></td>
   </tr>
 </table>
-
-
-
-<p>
-  <%= f.submit 'Submit', class:'submit-button' %>
-</p>
 
 <% end %>
 
