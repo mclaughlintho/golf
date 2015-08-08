@@ -162,6 +162,8 @@ $(document).ready(function() {
   });
 });
 
+// Holes Filter //
+
 $(document).ready(function() {
   $(document).on('change', '#holes_selector', function(event) {
     var holes_selector = $(this).val();
@@ -191,4 +193,42 @@ $(document).ready(function() {
       }
     });
   });
+});
+
+// Date Filter
+
+$(document).ready(function() {
+    $(document).on('change', '#played_on_date', function(event) {
+      var filterDate = $(this).val();
+      var date_selector = $('#date_selector option:selected').val();
+      $.map($('.date'), function(item, index) {
+        var $item = $(item);
+        var actualDate = $item.data('date');
+        console.log(actualDate);
+        if(date_selector === "1") {
+          if(actualDate > filterDate) {
+            $item.closest('.round').hide();
+          } else {
+            $item.closest('.round').show();
+          }
+        } else if(date_selector === "2") {
+          if(actualDate < filterDate) {
+            $item.closest('.round').hide();
+          } else {
+            $item.closest('.round').show();
+          }
+        } else if(date_selector === "3") {
+          if(actualDate === filterDate) {
+            $item.closest('.round').show();
+          } else {
+            $item.closest('.round').hide();
+          }
+          }
+        });
+    });
+    
+  $(document).on('change', '#date_selector', function() {
+    $('#played_on_date').trigger('change');
+  });
+
 });
