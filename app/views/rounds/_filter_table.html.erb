@@ -1,6 +1,6 @@
   <table class='filter-table'>
     <tr>
-      <td><%= label_tag(:score_to_par, "Score to Par") %></td>
+      <td><%= label_tag(:score_to_par, "Score to Par:") %></td>
       <td><%= select_tag(:score_to_par_selector, options_for_select([["Better Than", 1], ["Worse Than", 2]], 1)) %></td>
       <td>
         <%= form_tag do %>
@@ -9,7 +9,7 @@
       </td>
     </tr>
     <tr>
-      <td><%= label_tag(:par, "Par") %></td>
+      <td><%= label_tag(:par, "Par:") %></td>
       <td><%= select_tag(:par_selector, options_for_select([["Greater Than", 1], ["Less Than", 2]], 1)) %></td>
       <td>
         <%= form_tag do %>
@@ -18,7 +18,7 @@
       </td>
     </tr>
     <tr>
-      <td><%= label_tag(:score, "Score") %></td>
+      <td><%= label_tag(:score, "Score:") %></td>
       <td><%= select_tag(:score_selector, options_for_select([["Greater Than", 1], ["Less Than", 2]], 1)) %></td>
       <td>
         <%= form_tag do %>
@@ -27,9 +27,26 @@
       </td>
     </tr>
     <tr>
-      <td><%= label_tag(:holes, "Holes") %></td>
+      <td><%= label_tag(:holes, "Holes:") %></td>
       <td><%= select_tag(:holes_selector, options_for_select([["All", 1], ["18", 2], ["9", 3], ["Other", 4]], 1)) %></td>
       <td>
       </td>
+    </tr>
+    <tr>
+      <td><%= label_tag(:date, "Date:") %></td>
+      <td><%= select_tag(:date_selector, options_for_select([["Before", 1], ["After", 2], ["On", 3]])) %></td>
+      <td><%= date_field(:played_on, :date) %></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><button>This Week</button></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><button>This Month</button></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><button>This Year</button></td>
     </tr>
   </table>
