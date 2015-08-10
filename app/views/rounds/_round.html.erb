@@ -13,8 +13,8 @@
           <%= round.score_to_par %>
         <% end %>
       </td>
-      <td class=""><%= round.drinking? %></td>
-      <td class="">
+      <td class="drinking" data-drinking="<%= round.drinking? %>"><%= round.drinking? %></td>
+      <td class="comments">
         <% if  !round.comments.blank? %>
           <%= link_to 'Comments', '#', class:"comments", data: { confirm: round.comments } %>
         <% end %>

@@ -18,13 +18,15 @@
 //= require tablesorter/jquery.tablesorter
 
 
-// Clicking 'Submit' button for a New Round
+
+
+// Clicking 'Submit' button for a New Round //
 
 $(document).ready(function() {
   
   $(document).on('submit', '.new-round-form form', function(event) {
     event.preventDefault();
-    var form = $(this)
+    var form = $(this);
     $.ajax(form.attr('action'), {
     type: 'post',
     data: form.serialize(),
@@ -38,7 +40,7 @@ $(document).ready(function() {
   });
 
 
-// Clicking 'Delete' button
+// Clicking 'Delete' button //
 
   $(document).on('click', '.delete-button', function(event) {
     event.preventDefault();
@@ -60,7 +62,10 @@ $(document).ready(function() {
   
 });
 
-// TableSorter Plug-in
+
+
+
+// TableSorter Plug-in //
 
 $(document).on('ready page:load', function() {
    $("#rounds-table").tablesorter();
@@ -69,9 +74,11 @@ $(document).on('ready page:load', function() {
 
 
 
-// Filtering Rounds
+// Filtering Rounds //
 
-// Score-To-Par Filter
+
+
+// Score-To-Par Filter //
 
 $(document).ready(function() {
   $(document).on('change', "#filter_score_to_par", function(event) {
@@ -195,7 +202,7 @@ $(document).ready(function() {
   });
 });
 
-// Date Filter
+// Date Filters
 
 $(document).ready(function() {
     $(document).on('change', '#played_on_date', function(event) {
@@ -246,6 +253,33 @@ $(document).ready(function() {
         $item.closest('.round').show();
       } else {
         $item.closest('.round').hide();
+      }
+    });
+  });
+});
+
+// Drinking FIlter //
+
+$(document).ready(function() {
+  $(document).on('change', '#drinking_selector', function() {
+    var drinkingSelector = $('#drinking_selector option:selected').val();
+    $.map($('.drinking'), function(item, index) {
+      var $item = $(item);
+      var actualDrinking = $item.data('drinking');
+      if(drinkingSelector === "2") {
+        if(actualDrinking === true) {
+          $item.closest('.round').show();
+        } else {
+          $item.closest('.round').hide();
+        }
+      } else if(drinkingSelector === "3") {
+        if(actualDrinking === false) {
+          $item.closest('.round').show();
+        } else {
+          $item.closest('.round').hide();
+        }
+      } else {
+        $item.closest('.round').show();
       }
     });
   });
