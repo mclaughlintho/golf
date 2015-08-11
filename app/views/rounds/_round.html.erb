@@ -1,5 +1,9 @@
     <tr class="round">
-      <td class="date" data-date="<%= round.date %>"><%= round.date %></td>
+      <td class="date" data-date="<%= round.date %>">
+        <% if !round.date.nil? %>
+          <%= round.date.to_formatted_s(:long) %>
+        <% end %>
+      </td>
       <td class="course" data-course="<%= round.course %>"><%= round.course %></td>
       <td class="holes" data-holes="<%= round.holes %>"><%= round.holes %></td>
       <td class="score" data-par="<%=round.score %>"><%= round.score %></td>

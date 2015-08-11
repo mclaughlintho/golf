@@ -16,17 +16,18 @@
 //= require_tree .
 //= require bootstrap-sprockets
 //= require tablesorter/jquery.tablesorter
+//= require moment
 
 
 
 
-// Clicking 'Submit' button for a New Round //
+// Clicking 'Submit' button for a New Round
 
 $(document).ready(function() {
   
-  $(document).on('submit', '.new-round-form form', function(event) {
+  $(document).on('submit', '#new_round', function(event) {
     event.preventDefault();
-    var form = $(this);
+    var form = $(this)
     $.ajax(form.attr('action'), {
     type: 'post',
     data: form.serialize(),
@@ -40,7 +41,7 @@ $(document).ready(function() {
   });
 
 
-// Clicking 'Delete' button //
+// Clicking 'Delete' button
 
   $(document).on('click', '.delete-button', function(event) {
     event.preventDefault();
@@ -146,7 +147,7 @@ $(document).ready(function() {
     var filterScore = $(this).val();
     var score_selector = $('#score_selector option:selected').val();
     $.map($('.score'), function(item, index) {
-      var $item = $(item)
+      var $item = $(item);
       var actualScore = $item.data('par');
       if(score_selector === "1") {
         if(actualScore < filterScore) {
@@ -236,6 +237,75 @@ $(document).ready(function() {
     
   $(document).on('change', '#date_selector', function() {
     $('#played_on_date').trigger('change');
+  });
+  
+  // Week, Month and Year Filters //
+  
+  
+    $(document).on('click', '.this-week', function(event) {
+    event.preventDefault();
+    var thisWeekButton = $(this);
+    thisWeekButton.toggleClass('active');
+    if(thisWeekButton.hasClass('active')) {
+      $('.this-month').removeClass('active');
+      $('.this-year').removeClass('active');
+      var startOfWeek = moment().startOf('week');
+      $.map($('.date'), function(item, index) {
+        var $item = $(item);
+        var dateOfRound = moment($item.data('date'));
+        if(dateOfRound > startOfWeek) {
+          $item.closest('.round').show();
+        } else {
+          $item.closest('.round').hide();
+        }
+      });
+    } else {
+      $('.round').show();
+    }
+  });
+  
+    $(document).on('click', '.this-month', function(event) {
+    event.preventDefault();
+    var thisMonthButton = $(this);
+    thisMonthButton.toggleClass('active');
+    if(thisMonthButton.hasClass('active')) {
+      $('.this-week').removeClass('active');
+      $('.this-year').removeClass('active');
+      var startOfMonth = moment().startOf('month');
+      $.map($('.date'), function(item, index) {
+        var $item = $(item);
+        var dateOfRound = moment($item.data('date'));
+        if(dateOfRound > startOfMonth) {
+          $item.closest('.round').show();
+        } else {
+          $item.closest('.round').hide();
+        }
+      });
+    } else {
+      $('.round').show();
+    }
+  });
+  
+    $(document).on('click', '.this-year', function(event) {
+    event.preventDefault();
+    var thisYearButton = $(this);
+    thisYearButton.toggleClass('active');
+    if(thisYearButton.hasClass('active')) {
+      $('.this-week').removeClass('active');
+      $('.this-month').removeClass('active');
+      var startOfYear = moment().startOf('year');
+      $.map($('.date'), function(item, index) {
+        var $item = $(item);
+        var dateOfRound = moment($item.data('date'));
+        if(dateOfRound > startOfYear) {
+          $item.closest('.round').show();
+        } else {
+          $item.closest('.round').hide();
+        }
+      });
+    } else {
+      $('.round').show();
+    }
   });
 
 });
