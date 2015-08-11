@@ -354,3 +354,21 @@ $(document).ready(function() {
     });
   });
 });
+
+// Switching between Add-Round-View and Filter-View //
+
+$(document).ready(function() {
+  
+  $(document).on('click', '#filter-round-button', function(event) {
+    event.preventDefault();
+    $('.add-round-view').slideUp();
+    $('.filter-round-view').show();
+  })
+  
+   $(document).on('click', '#add-round-button', function(event) {
+    event.preventDefault();
+    $('.filter-round-view').hide();
+    $('.add-round-view').fadeIn();
+  })
+  
+})

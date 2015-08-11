@@ -1,10 +1,12 @@
 <div class="container-fluid"><h1><%= gravatar_for @user %><%= @user.email %></h1>
 
-<div>
+<div class="add-round-view">
   <%= render 'rounds/form' %>
+  <button id="filter-round-button">Filter Data</button>
 </div>
 
-<div>
+<div class="filter-round-view">
+    <button id="add-round-button">Add A New Round</button>
     <%= render 'rounds/filter_table' %>
 </div>
 
