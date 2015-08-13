@@ -6,9 +6,9 @@
       </td>
       <td class="course" data-course="<%= round.course %>"><%= round.course %></td>
       <td class="holes" data-holes="<%= round.holes %>"><%= round.holes %></td>
-      <td class="score" data-par="<%=round.score %>"><%= round.score %></td>
+      <td class="score" data-score="<%=round.score %>"><%= round.score %></td>
       <td class="par" data-par="<%=round.par %>"><%= round.par %></td>
-      <td class="score-to-par" data-score="<%=round.score_to_par %>">
+      <td class="score-to-par" data-score-to-par="<%=round.score_to_par %>">
         <% if !round.score_to_par.nil? && round.score_to_par == 0 %>
           Even
         <% elsif !round.score_to_par.nil? && round.score_to_par > 0 %>

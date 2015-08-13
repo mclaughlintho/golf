@@ -17,6 +17,7 @@
 //= require bootstrap-sprockets
 //= require tablesorter/jquery.tablesorter
 //= require moment
+//= require underscore
 
 
 
@@ -75,194 +76,28 @@ $(document).on('ready page:load', function() {
 
 
 
-// Filtering Rounds //
+// Filtering Rounds Event Handlers //
 
 
 
-// Score-To-Par Filter //
-
-$(document).ready(function() {
-  $(document).on('change', "#filter_score_to_par", function(event) {
-    var filterScoreToPar = $(this).val();
-    var score_to_par_selector = $('#score_to_par_selector option:selected').val();
-    $.map($('.score-to-par'), function(item, index) {
-      var $item = $(item)
-      var actualScoreToPar = $item.data('score');
-      if(score_to_par_selector === "1") {
-        if(actualScoreToPar > filterScoreToPar) {
-          $item.closest('.round').hide();
-        } else {
-          $item.closest('.round').show();
-        }
-      } else {
-        if(actualScoreToPar < filterScoreToPar) {
-          $item.closest('.round').hide();
-        } else {
-          $item.closest('.round').show();
-        }
-      }
-    });
-  });
-  
-  $(document).on('change', '#score_to_par_selector', function() {
-    $('#filter_score_to_par').trigger('change');
-  })
-  
-});
-
-// Par Filter
 
 $(document).ready(function() {
-    $(document).on('change', "#filter_par", function(event) {
-    var filterPar = $(this).val();
-    var par_selector = $('#par_selector option:selected').val();
-    $.map($('.par'), function(item, index) {
-      var $item = $(item)
-      var actualPar = $item.data('par');
-      if(par_selector === "1") {
-        if(actualPar < filterPar) {
-          $item.closest('.round').hide();
-        } else {
-          $item.closest('.round').show();
-        }
-      } else {
-        if(actualPar > filterPar) {
-          $item.closest('.round').hide();
-        } else {
-          $item.closest('.round').show();
-        }
-      }
-    });
-  });
-  
-  $(document).on('change', '#par_selector', function() {
-    $('#filter_par').trigger('change');
-  })
-})
-
-// Score Filter
-
-$(document).ready(function() {
-    $(document).on('change', "#filter_score", function(event) {
-    var filterScore = $(this).val();
-    var score_selector = $('#score_selector option:selected').val();
-    $.map($('.score'), function(item, index) {
-      var $item = $(item);
-      var actualScore = $item.data('par');
-      if(score_selector === "1") {
-        if(actualScore < filterScore) {
-          $item.closest('.round').hide();
-        } else {
-          $item.closest('.round').show();
-        }
-      } else {
-        if(actualScore > filterScore) {
-          $item.closest('.round').hide();
-        } else {
-          $item.closest('.round').show();
-        }
-      }
-    });
-  });
-  
-  $(document).on('change', '#score_selector', function() {
-    $('#filter_score').trigger('change');
-  });
-});
-
-// Holes Filter //
-
-$(document).ready(function() {
-  $(document).on('change', '#holes_selector', function(event) {
-    var holes_selector = $(this).val();
-    $.map($('.holes'), function(item, index) {
-      var $item = $(item);
-      var actualHoles = $item.data('holes');
-      if(holes_selector === "1") {
-        $item.closest('.round').show();
-      } else if(holes_selector === "2") {
-        if(actualHoles === 18) {
-          $item.closest('.round').show();
-        } else {
-          $item.closest('.round').hide();
-        }
-      } else if(holes_selector === "3") {
-        if(actualHoles === 9) {
-          $item.closest('.round').show();
-        } else {
-          $item.closest('.round').hide();
-        }
-      } else if(holes_selector === "4") {
-        if(actualHoles === "Other") {
-          $item.closest('.round').show();
-        } else {
-          $item.closest('.round').hide();
-        }
-      }
-    });
-  });
-});
-
-// Date Filters
-
-$(document).ready(function() {
-    $(document).on('change', '#played_on_date', function(event) {
-      var filterDate = $(this).val();
-      var date_selector = $('#date_selector option:selected').val();
-      $.map($('.date'), function(item, index) {
-        var $item = $(item);
-        var actualDate = $item.data('date');
-        console.log(actualDate);
-        if(date_selector === "1") {
-          if(actualDate > filterDate) {
-            $item.closest('.round').hide();
-          } else {
-            $item.closest('.round').show();
-          }
-        } else if(date_selector === "2") {
-          if(actualDate < filterDate) {
-            $item.closest('.round').hide();
-          } else {
-            $item.closest('.round').show();
-          }
-        } else if(date_selector === "3") {
-          if(actualDate === filterDate) {
-            $item.closest('.round').show();
-          } else {
-            $item.closest('.round').hide();
-          }
-          }
-        });
-    });
-    
-  $(document).on('change', '#date_selector', function() {
-    $('#played_on_date').trigger('change');
-  });
-  
-  // Week, Month and Year Filters //
   
   
-    $(document).on('click', '.this-week', function(event) {
+  $(document).on('change', '.filter-item', function() {
+    checkAllFilters();
+  });
+  
+  $(document).on('click', '.this-week', function(event) {
     event.preventDefault();
     var thisWeekButton = $(this);
     thisWeekButton.toggleClass('active');
     if(thisWeekButton.hasClass('active')) {
       $('.this-month').removeClass('active');
       $('.this-year').removeClass('active');
-      var startOfWeek = moment().startOf('week');
-      $.map($('.date'), function(item, index) {
-        var $item = $(item);
-        var dateOfRound = moment($item.data('date'));
-        if(dateOfRound > startOfWeek) {
-          $item.closest('.round').show();
-        } else {
-          $item.closest('.round').hide();
-        }
-      });
-    } else {
-      $('.round').show();
     }
-  });
+    checkAllFilters();
+  })
   
     $(document).on('click', '.this-month', function(event) {
     event.preventDefault();
@@ -271,20 +106,9 @@ $(document).ready(function() {
     if(thisMonthButton.hasClass('active')) {
       $('.this-week').removeClass('active');
       $('.this-year').removeClass('active');
-      var startOfMonth = moment().startOf('month');
-      $.map($('.date'), function(item, index) {
-        var $item = $(item);
-        var dateOfRound = moment($item.data('date'));
-        if(dateOfRound > startOfMonth) {
-          $item.closest('.round').show();
-        } else {
-          $item.closest('.round').hide();
-        }
-      });
-    } else {
-      $('.round').show();
     }
-  });
+    checkAllFilters();
+  })
   
     $(document).on('click', '.this-year', function(event) {
     event.preventDefault();
@@ -293,67 +117,189 @@ $(document).ready(function() {
     if(thisYearButton.hasClass('active')) {
       $('.this-week').removeClass('active');
       $('.this-month').removeClass('active');
-      var startOfYear = moment().startOf('year');
-      $.map($('.date'), function(item, index) {
-        var $item = $(item);
-        var dateOfRound = moment($item.data('date'));
-        if(dateOfRound > startOfYear) {
-          $item.closest('.round').show();
-        } else {
-          $item.closest('.round').hide();
-        }
-      });
-    } else {
-      $('.round').show();
     }
-  });
+    checkAllFilters();
+  })
+  
+  $(document).on('click', '.course-search', function(event) {
+    event.preventDefault();
+    checkAllFilters();
+  })
+  
 
+  
+  
 });
+
+// Check All Filters Function //
+
+  var checkAllFilters = function() {
+    $('.round').map(function(index, round) {
+      var $round = $(round);
+      if(_.every([scoreFilterMatches($round), scoreToParFilterMatches($round), parFilterMatches($round), holesFilterMatches($round), courseFilterMatches($round),
+                drinkingFilterMatches($round), dateFilterMatches($round), thisWeekFilterMatches($round), thisMonthFilterMatches($round), thisYearFilterMatches($round)])) {
+        $round.show();
+      } else {
+        $round.hide();
+      }
+    });
+  }
+
+// Score Filter //
+
+  var scoreFilterMatches = function(round) {
+   var filterScore = parseInt($('#filter_score').val(), 10);
+    var score_selector = $('#score_selector option:selected').text();
+      var actualScore = round.children('.score').data('score');
+      if(isNaN(filterScore)) {
+        return true;
+        } else if(score_selector === "Greater Than") {
+        return (actualScore > filterScore); 
+      } else {
+        return (actualScore < filterScore);
+      }
+  };
+  
+  // Score-To-Par Filter //
+
+  var scoreToParFilterMatches = function(round) {
+    var filterScoreToPar = parseInt($("#filter_score_to_par").val(), 10);
+    var score_to_par_selector = $('#score_to_par_selector option:selected').text();
+    var actualScoreToPar = round.children('.score-to-par').data('score-to-par');
+    
+    if(isNaN(filterScoreToPar)) {
+      return true;
+    } else if(score_to_par_selector === "Better Than") {
+      return(actualScoreToPar < filterScoreToPar);
+    } else {
+        return(actualScoreToPar > filterScoreToPar);
+    }
+  }; 
+   
+
+
+// Par Filter
+
+  var parFilterMatches = function(round) {
+    var filterPar = parseInt($("#filter_par").val(), 10);
+    var par_selector = $('#par_selector option:selected').text();
+    var actualPar = round.children('.par').data('par');
+    
+    if(isNaN(filterPar)) {
+      return true;
+    } else if(par_selector === "Greater Than") {
+      return(actualPar > filterPar);
+    } else {
+      return(actualPar < filterPar);
+    }
+  };
+
+
+
+// Holes Filter //
+
+
+  var holesFilterMatches = function(round) {
+    var holes_selector = $('#holes_selector option:selected').text();
+    var actualHoles = round.children('.holes').data('holes');
+      if(holes_selector === "All") {
+        return true;
+      } else if(holes_selector === "18") {
+        return(actualHoles === 18);
+      } else if(holes_selector === "9") {
+        return(actualHoles === 9);
+      } else if(holes_selector === "Other") {
+        return(actualHoles === "Other");
+      }
+  };
+
+// Date Filters
+
+    var dateFilterMatches = function(round) {
+      var filterDate = $("#played_on_date").val();
+      var date_selector = $('#date_selector option:selected').text();
+      var actualDate = moment(round.children('.date').data('date'));
+        if(filterDate === "") {
+          return true;
+        } else {
+          filterDate = moment($("#played_on_date").val());
+          if(date_selector === "Before") {
+            return(actualDate < filterDate) ;
+          } else if(date_selector === "After") {
+            return(actualDate > filterDate) ;
+          } else if(date_selector === "On") {
+            return(actualDate === filterDate);
+          }
+        }
+    }
+  
+  // Week, Month and Year Filters //
+  
+  
+  var thisWeekFilterMatches = function(round) {
+    var thisWeekButton = $('.this-week');
+    if(thisWeekButton.hasClass('active')) {
+      var startOfWeek = moment().startOf('week');
+      var dateOfRound = moment(round.children('.date').data('date'));
+      return(dateOfRound > startOfWeek);
+    } else {
+      return true;
+    }
+  };
+  
+  var thisMonthFilterMatches = function(round) {
+    var thisMonthButton = $('.this-month');
+    if(thisMonthButton.hasClass('active')) {
+      var startOfMonth = moment().startOf('month');
+      var dateOfRound = moment(round.children('.date').data('date'));
+      return(dateOfRound > startOfMonth);
+    } else {
+      return true;
+    }
+  };
+  
+  var thisYearFilterMatches = function(round) {
+    var thisYearButton = $('.this-year');
+    if(thisYearButton.hasClass('active')) {
+      var startOfYear = moment().startOf('year');
+      var dateOfRound = moment(round.children('.date').data('date'));
+      return(dateOfRound > startOfYear);
+    } else {
+      return true;
+    }
+  };
 
 // COurse Filter //
 
-$(document).ready(function() {
-  $(document).on('click', ".course-search", function(event) {
-    event.preventDefault();
+  var courseFilterMatches = function(round) {
     var filterCourse = $('#course').val();
-    $.map($('.course'), function(item, index) {
-      var $item = $(item);
-      var actualCourse = $item.data('course');
-      if(actualCourse === filterCourse) {
-        $item.closest('.round').show();
-      } else {
-        $item.closest('.round').hide();
-      }
-    });
-  });
-});
+    var actualCourse = round.children('.course').data('course');
+    if(filterCourse === "") {
+      return true;
+    } else if(actualCourse === filterCourse) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 
 // Drinking FIlter //
-
-$(document).ready(function() {
-  $(document).on('change', '#drinking_selector', function() {
-    var drinkingSelector = $('#drinking_selector option:selected').val();
-    $.map($('.drinking'), function(item, index) {
-      var $item = $(item);
-      var actualDrinking = $item.data('drinking');
-      if(drinkingSelector === "2") {
-        if(actualDrinking === true) {
-          $item.closest('.round').show();
-        } else {
-          $item.closest('.round').hide();
-        }
-      } else if(drinkingSelector === "3") {
-        if(actualDrinking === false) {
-          $item.closest('.round').show();
-        } else {
-          $item.closest('.round').hide();
-        }
+  
+  var drinkingFilterMatches = function(round) {
+    var drinkingSelector = $('#drinking_selector option:selected').text();
+    var actualDrinking = round.children('.drinking').data('drinking');
+      if(drinkingSelector === "True") {
+        return(actualDrinking);
+      } else if(drinkingSelector === "False") {
+        return(!actualDrinking);
       } else {
-        $item.closest('.round').show();
+        return true;
       }
-    });
-  });
-});
+  }
+  
+  
+  
+  
 
 // Switching between Add-Round-View and Filter-View //
 
